@@ -1,4 +1,4 @@
-# IraniCard (API)
+# IraniCard
 
 ## Run Locally
 
