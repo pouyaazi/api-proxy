@@ -1,0 +1,43 @@
+{
+    "name":"iranicard",
+    "users":[
+        {
+            "id":1,
+            "name":"ali",
+            "token":"Bearer xxx",
+            "service":"weatherstack",
+            "prefix":"/panel/api/v1",
+            "header":"authorization"
+        },
+        {
+            "id":2,
+            "name":"pouya",
+            "token":"yyy",
+            "service":"neshan",
+            "prefix":"/api/v1",
+            "header":"x-api-key"
+        }
+    ],
+    "services":[
+        {
+            "id":1,
+            "name":"weatherstack",
+            "type":"query",
+            "data":{},
+            "url":"http://api.weatherstack.com",
+            "check":"http://api.weatherstack.com",
+            "notOk":"invalid_access_key",
+            "header":""
+        },
+        {
+            "id":1,
+            "name":"neshan",
+            "type":"header",
+            "data":{},
+            "url":"https://api.neshan.org/v1",
+            "check":"https://api.neshan.org/v1/search?term=آهن&lat=32.545454&lng=52.654654",
+            "notOk":"ERROR",
+            "header":""
+        }
+    ]
+}
