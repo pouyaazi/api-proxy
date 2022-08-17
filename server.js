@@ -91,44 +91,7 @@ app.post('/service/:serviceName', async (req, res, next) => {
     }
 })
 
-/*
-app.all('/service/:serviceName/*', checkAuth,async (req, res, next) => {
-    var service = config.services.find((x) => x.name == req.params.serviceName);
-    let url = new URL(service.url)
-    url.pathname = '/' + req.path.split('/').filter((x) => x).splice(2).join('/')
-    let options = {}
-    let headers = 'Content-Type' | req.headers['content-type'];
-    let body = req.headers['content-type'] == 'application/json' ? JSON.stringify(req.body) : req.body;
-    if (service.type == 'query') {
-        let search = req.query;
-        search = {
-            ...search,
-            ...service.data
-        }
-        url.search = serialize(search);
-    }
-    if (service.type == 'bearer') {
-        headers.authorization = "Bearer {pick-key!}";
-    }
-    let payload = await nodeFetch(url,
-        {
-            method: req.method,
-            body: ['POST', 'PUT'].includes(req.method) ? body : undefined,
-            headers: headers,
-            options: options,
-        }
-    );
-    try {
-        let data = await payload.text();
-        res.send(data)
-    } catch (e) {
-        res.status(404).send('Not found')
-    }
-})
-*/
-
 app.all(/.*/,checkAuth, async (req, res, next) => {
-    console.log(serialize(req.query))
     var service = config.services.find((x) => x.name == req.token.service);
     let url = new URL(service.url)
     var lengthPrefix=req.token.prefix.split('/').filter((x)=>x).length;
@@ -159,7 +122,6 @@ app.all(/.*/,checkAuth, async (req, res, next) => {
             }
         }
     }
-    console.log(headers);
     let payload = await nodeFetch(url,
         {
             method: req.method,
