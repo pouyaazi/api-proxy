@@ -1,9 +1,0 @@
-{
-	"name": "api-proxy",
-	"script": "./server.imba",
-	"time": true,
-    "env": {
-        "PORT": "3000"
-    },
-    "interpreter": "/home/scrimba/.npm-packages/bin/imba"
-}
