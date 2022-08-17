@@ -1,7 +1,8 @@
+require('dotenv').config()
+const PORT=process.env.PORT;
 var express = require('express')
 const sys = require('sys');
 var bodyParser = require('body-parser')
-require('dotenv').config()
 var nodeFetch = require('node-fetch');
 var cors = require('cors');
 var app = express()
@@ -138,6 +139,6 @@ app.all(/.*/,checkAuth, async (req, res, next) => {
     }
 })
 
-app.listen(3000, () => {
-    console.log(`Example app listening on port ${3000}`)
+app.listen(PORT, () => {
+    console.log(`Example app listening on port ${PORT}`)
 })
